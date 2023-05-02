@@ -19,6 +19,7 @@ defmodule Sms.Business do
   """
   def list_stores do
     Repo.all(Store)
+    |> Repo.preload(:products)
   end
 
   @doc """
@@ -35,7 +36,10 @@ defmodule Sms.Business do
       ** (Ecto.NoResultsError)
 
   """
-  def get_store!(id), do: Repo.get!(Store, id)
+  def get_store!(id) do
+     Repo.get!(Store, id)
+    |> Repo.preload(:products)
+  end
 
   @doc """
   Creates a store.
@@ -114,7 +118,9 @@ defmodule Sms.Business do
 
   """
   def list_products do
-    Repo.all(Product)
+    Product
+    |> Repo.all()
+    |> Repo.preload(:store)
   end
 
   @doc """
@@ -131,8 +137,9 @@ defmodule Sms.Business do
       ** (Ecto.NoResultsError)
 
   """
-  def get_product!(id), do: Repo.get!(Product, id)
-
+  def get_product!(id) do
+    Repo.get!(Product, id) |> Repo.preload(:store)
+  end
   @doc """
   Creates a product.
 

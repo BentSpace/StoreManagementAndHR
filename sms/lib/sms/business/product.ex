@@ -2,13 +2,15 @@ defmodule Sms.Business.Product do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Sms.Business.Store
+
   schema "products" do
     field :inventory_count, :integer
     field :name, :string
     field :retail_price, :float
     field :supplier, :string
     field :wholesale_price, :float
-    field :store_id, :id
+    belongs_to :store, Store
 
     timestamps()
   end

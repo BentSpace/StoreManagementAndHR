@@ -2,13 +2,15 @@ defmodule Sms.Business.Store do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Sms.Business.Product
+
   schema "stores" do
     field :city, :string
     field :state, :string
     field :store_id, :integer
     field :street_address, :string
     field :zipcode, :string
-
+    has_many :products, Product
     timestamps()
   end
 
