@@ -30,6 +30,8 @@ defmodule SmsWeb.Router do
     live "/products/:id", ProductLive.Show, :show
     live "/products/:id/show/edit", ProductLive.Show, :edit
 
+    live "/employees", EmployeeLive.Index, :index
+
     get "/", PageController, :home
   end
 
