@@ -18,7 +18,7 @@ defmodule Sms.Business.Product do
   @doc false
   def changeset(product, attrs) do
     product
-    |> cast(attrs, [:name, :supplier, :wholesale_price, :retail_price, :inventory_count])
+    |> cast(attrs, [:name, :supplier, :wholesale_price, :retail_price, :inventory_count, :store_id])
     |> validate_required([:name, :supplier, :wholesale_price, :retail_price, :inventory_count])
   end
 end
